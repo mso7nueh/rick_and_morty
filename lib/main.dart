@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/feature/data/datasources/person_remote_data_source.dart';
-import 'package:http/http.dart' as http;
 
 void main() => runApp(const MyApp());
 

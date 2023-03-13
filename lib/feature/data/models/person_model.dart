@@ -25,8 +25,12 @@ class PersonModel extends PersonEntity {
         species: json['species'],
         type: json['type'],
         gender: json['gender'],
-        origin: json['origin'] != null ? LocationModel.fromJson(json['origin']) : null,
-        location: json['location'] != null ? LocationModel.fromJson(json['origin']) : null,
+        origin: json['origin'] != null
+            ? LocationModel.fromJson(json['origin'])
+            : null,
+        location: json['location'] != null
+            ? LocationModel.fromJson(json['origin'])
+            : null,
         image: json['image'],
         episode:
             (json['episode'] as List<dynamic>).map((e) => e as String).toList(),
