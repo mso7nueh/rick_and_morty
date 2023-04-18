@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/core/error/failure.dart';
+import 'package:rick_and_morty/feature/domain/usecases/search_person.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/search_bloc/search_event.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/search_bloc/search_state.dart';
-import 'package:rick_and_morty/feature/usecases/search_person.dart';
 
 class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
   final SearchPerson searchPerson;

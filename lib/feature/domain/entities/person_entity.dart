@@ -13,18 +13,19 @@ class PersonEntity extends Equatable {
   final List<String> episode;
   final DateTime created;
 
-  const PersonEntity(
-      this.id,
-      this.name,
-      this.status,
-      this.species,
-      this.type,
-      this.gender,
-      this.origin,
-      this.location,
-      this.image,
-      this.episode,
-      this.created);
+  const PersonEntity({
+    required this.id,
+    required this.name,
+    required this.status,
+    required this.species,
+    required this.type,
+    required this.gender,
+    required this.origin,
+    required this.location,
+    required this.image,
+    required this.episode,
+    required this.created,
+  });
 
   @override
   List<Object?> get props => [
@@ -38,7 +39,7 @@ class PersonEntity extends Equatable {
         location,
         image,
         episode,
-        created
+        created,
       ];
 }
 
@@ -46,5 +47,5 @@ class LocationEntity {
   final String name;
   final String url;
 
-  const LocationEntity(this.name, this.url);
+  const LocationEntity({required this.name, required this.url});
 }

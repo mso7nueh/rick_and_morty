@@ -1,8 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/core/error/failure.dart';
 import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
+import 'package:rick_and_morty/feature/domain/usecases/get_all_persons.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/person_list_cubit/person_list_state.dart';
-import 'package:rick_and_morty/feature/usecases/get_all_persons.dart';
+
+const SERVER_FAILURE_MESSAGE = 'Server Failure';
+const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
 class PersonListCubit extends Cubit<PersonState> {
   final GetAllPersons getAllPersons;
@@ -25,20 +28,23 @@ class PersonListCubit extends Cubit<PersonState> {
 
     final failureOrPerson = await getAllPersons(PagePersonParams(page: page));
 
-    failureOrPerson.fold((failure) => PersonError(message: _mapFailureToMessage(failure)), (character) {
-      page++;
-      final persons = (state as PersonLoading).oldPersonsList;
-      persons.addAll(character);
-      emit(PersonLoaded(persons));
-    });
+    failureOrPerson.fold(
+            (error) => emit(PersonError(message: _mapFailureToMessage(error))),
+            (character) {
+          page++;
+          final persons = (state as PersonLoading).oldPersonsList;
+          persons.addAll(character);
+          print('List length: ${persons.length.toString()}');
+          emit(PersonLoaded(persons));
+        });
   }
 
   String _mapFailureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return 'Server Failure';
+        return SERVER_FAILURE_MESSAGE;
       case CacheFailure:
-        return 'Cache Failure';
+        return CACHED_FAILURE_MESSAGE;
       default:
         return 'Unexpected Error';
     }
