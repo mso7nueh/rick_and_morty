@@ -15,7 +15,8 @@ class PersonCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PersonDetailPage(person: person)),
+          MaterialPageRoute(
+              builder: (context) => PersonDetailPage(person: person)),
         );
       },
       child: Container(

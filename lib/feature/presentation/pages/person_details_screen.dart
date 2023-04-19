@@ -6,7 +6,7 @@ import 'package:rick_and_morty/feature/presentation/widgets/person_cache_image_w
 class PersonDetailPage extends StatelessWidget {
   final PersonEntity person;
 
-  PersonDetailPage({Key? key, required this.person}) : super(key: key);
+  const PersonDetailPage({Key? key, required this.person}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,10 @@ class PersonDetailPage extends StatelessWidget {
             const SizedBox(
               height: 12,
             ),
-            Container(
-              child: PersonCacheImage(
-                width: 260,
-                height: 260,
-                imageUrl: person.image,
-              ),
+            PersonCacheImage(
+              width: 260,
+              height: 260,
+              imageUrl: person.image,
             ),
             const SizedBox(
               height: 16,

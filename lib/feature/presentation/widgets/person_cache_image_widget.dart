@@ -6,10 +6,7 @@ class PersonCacheImage extends StatelessWidget {
   final double? width, height;
 
   const PersonCacheImage(
-      {Key? key,
-      required this.imageUrl,
-      this.width,
-      this.height})
+      {Key? key, required this.imageUrl, this.width, this.height})
       : super(key: key);
 
   Widget _imageWidget(ImageProvider imageProvider) {
@@ -19,7 +16,7 @@ class PersonCacheImage extends StatelessWidget {
           image: imageProvider,
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(8.0),
           bottomLeft: Radius.circular(8.0),
         ),
@@ -32,18 +29,18 @@ class PersonCacheImage extends StatelessWidget {
     return CachedNetworkImage(
       width: width,
       height: height,
-      imageUrl: imageUrl ?? '',
+      imageUrl: imageUrl,
       imageBuilder: (context, imageProvider) {
         return _imageWidget(imageProvider);
       },
       placeholder: (context, url) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       },
       errorWidget: (context, url, error) {
         return _imageWidget(
-          AssetImage('assets/images/noimage.jpg'),
+          const AssetImage('assets/images/noimage.jpg'),
         );
       },
     );

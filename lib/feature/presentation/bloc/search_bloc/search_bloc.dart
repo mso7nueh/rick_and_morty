@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/core/error/failure.dart';
 import 'package:rick_and_morty/feature/domain/usecases/search_person.dart';
@@ -19,10 +20,10 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
       SearchPersons event, Emitter<PersonSearchState> emit) async {
     emit(PersonSearchLoading());
     final failureOrPerson =
-    await searchPerson(SearchPersonParams(query: event.personQuery));
+        await searchPerson(SearchPersonParams(query: event.personQuery));
     emit(failureOrPerson.fold(
-            (failure) => PersonSearchError(message: _mapFailureToMessage(failure)),
-            (person) => PersonSearchLoaded(persons: person)));
+        (failure) => PersonSearchError(message: _mapFailureToMessage(failure)),
+        (person) => PersonSearchLoaded(persons: person)));
   }
 
   String _mapFailureToMessage(Failure failure) {

@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: AppColors.mainBackground,
           scaffoldBackgroundColor: AppColors.mainBackground,
         ),
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

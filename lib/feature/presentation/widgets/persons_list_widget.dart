@@ -41,7 +41,7 @@ class PersonsList extends StatelessWidget {
         } else if (state is PersonError) {
           return Text(
             state.message,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 25,
             ),
@@ -54,7 +54,7 @@ class PersonsList extends StatelessWidget {
             if (index < persons.length) {
               return PersonCard(person: persons[index]);
             } else {
-              Timer(Duration(milliseconds: 30), () {
+              Timer(const Duration(milliseconds: 30), () {
                 scrollController
                     .jumpTo(scrollController.position.maxScrollExtent);
               });
