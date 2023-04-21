@@ -21,15 +21,15 @@ class SearchResult extends StatelessWidget {
       },
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(8),
         ),
         elevation: 2.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: double.infinity,
               height: 300,
+              width: double.infinity,
               child: PersonCacheImage(
                 imageUrl: personResult.image,
               ),

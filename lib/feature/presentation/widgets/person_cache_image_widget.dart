@@ -16,10 +16,7 @@ class PersonCacheImage extends StatelessWidget {
           image: imageProvider,
           fit: BoxFit.cover,
         ),
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(8.0),
-          bottomLeft: Radius.circular(8.0),
-        ),
+        borderRadius: BorderRadius.circular(8.0),
       ),
     );
   }
