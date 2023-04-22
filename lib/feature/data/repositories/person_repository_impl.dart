@@ -38,7 +38,7 @@ class PersonRepositoryImpl implements PersonRepository {
     if (await networkInfo.isConnected) {
       try {
         final remotePerson = await getPersons();
-        localDataSource.personsToCache(remotePerson);
+        await localDataSource.personsToCache(remotePerson);
         return Right(remotePerson);
       } on ServerException {
         return Left(ServerFailure());
